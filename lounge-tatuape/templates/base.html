@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Lounge Tatuapé{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+{% if session.get('logged_in') %}
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="{{ url_for('pedidos') }}">
+      <span class="brand-icon">◇✓</span>
+      <strong>LOUNGE<br>TATUAPÉ</strong>
+      <small>CONTROLE DE ENTREGAS</small>
+    </a>
+    <nav>
+      <a class="{{ 'active' if active == 'pedidos' else '' }}" href="{{ url_for('pedidos') }}"><span>⊕</span>Cadastrar Pedido</a>
+      <a class="{{ 'active' if active == 'consultar' else '' }}" href="{{ url_for('consultar') }}"><span>⌕</span>Consultar Pedidos</a>
+      <a class="{{ 'active' if active == 'alertas' else '' }}" href="{{ url_for('alertas') }}"><span>⚠</span>Alertas</a>
+      <a class="logout" href="{{ url_for('logout') }}"><span>⇥</span>Sair</a>
+    </nav>
+  </aside>
+  <main class="main-area">
+    <div class="topbar">♙ &nbsp; Usuário: {{ session.get('username', 'admin') }}</div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}{% for category, message in messages %}
+        <div class="notice {{ category }}" role="status">{{ message }}</div>
+      {% endfor %}{% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</div>
+{% else %}
+  {% block public_content %}{% endblock %}
+{% endif %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

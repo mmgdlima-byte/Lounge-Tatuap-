@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Login | Lounge Tatuapé{% endblock %}
+{% block public_content %}
+<div class="login-wrap">
+  <section class="login-card">
+    <div class="login-brand">LOUNGE TATUAPÉ</div>
+    <div class="subtitle">CONTROLE DE ENTREGAS</div>
+    <div class="login-icon">◇✓</div>
+    <h2>Acesse sua conta</h2>
+    <form method="post" class="login-form">
+      <label for="username">Usuário</label>
+      <input id="username" name="username" placeholder="Digite seu usuário" autocomplete="username" required>
+      <label for="password">Senha</label>
+      <input id="password" name="password" type="password" placeholder="Digite sua senha" autocomplete="current-password" required>
+      <button class="primary full" type="submit">Entrar</button>
+    </form>
+    <p class="login-foot">Sistema interno de acompanhamento de pedidos</p>
+    <p class="demo-hint">Acesso demonstrativo: admin / lounge123</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}{% for category, message in messages %}
+        <div class="notice {{ category }}" role="alert">{{ message }}</div>
+      {% endfor %}{% endif %}
+    {% endwith %}
+  </section>
+</div>
+{% endblock %}
