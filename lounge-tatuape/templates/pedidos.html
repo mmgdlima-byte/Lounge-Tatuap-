@@ -1,34 +1,90 @@
+
 {% extends "base.html" %}
 {% block title %}Cadastro de Pedidos | Lounge Tatuapé{% endblock %}
 {% block content %}
 <section class="panel">
   <header class="page-heading">
     <div class="heading-icon">◇✓</div>
-    <div><h1>Cadastro de Pedidos</h1><p>Preencha os dados abaixo para cadastrar um novo pedido.</p></div>
+    <div>
+      <h1>Cadastro de Pedidos</h1>
+      <p>Preencha os dados abaixo para cadastrar um novo pedido.</p>
+    </div>
   </header>
+
   <form method="post" class="order-form">
-    <div class="field"><label for="region">♙ Região de Destino</label>
+
+    <div class="field">
+      <label for="order_name">Nome do pedido</label>
+      <input
+        id="order_name"
+        name="order_name"
+        placeholder="Ex.: Pedido de acessórios"
+        maxlength="120"
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label for="volume">Volume</label>
+      <input
+        id="volume"
+        name="volume"
+        placeholder="Ex.: 1 caixa ou 2 volumes"
+        maxlength="50"
+        required
+      >
+    </div>
+
+    <div class="field">
+      <label for="region">Região de Destino</label>
       <select id="region" name="region" required>
         <option value="">Selecione uma região</option>
         {% for r in ["São Paulo - SP", "Zona Leste - SP", "Rio de Janeiro - RJ", "Minas Gerais - MG", "Paraná - PR", "Bahia - BA"] %}
-        <option>{{ r }}</option>{% endfor %}
+        <option>{{ r }}</option>
+        {% endfor %}
       </select>
     </div>
-    <div class="field"><label for="carrier">▣ Transportadora</label>
+
+    <div class="field">
+      <label for="carrier">Transportadora</label>
       <select id="carrier" name="carrier" required>
         <option value="">Selecione uma transportadora</option>
         {% for c in ["Transportadora Expressa", "LogiRápido", "Entrega Já", "Expressa Brasil", "Transportadora Alfa"] %}
-        <option>{{ c }}</option>{% endfor %}
+        <option>{{ c }}</option>
+        {% endfor %}
       </select>
     </div>
-    <div class="field"><label for="tracking_code">▥ Código de Rastreamento</label>
-      <input id="tracking_code" name="tracking_code" placeholder="Digite o código de rastreamento" required>
+
+    <div class="field">
+      <label for="tracking_code">Código de Rastreamento</label>
+      <input
+        id="tracking_code"
+        name="tracking_code"
+        placeholder="Digite o código de rastreamento"
+        maxlength="100"
+        required
+      >
     </div>
-    <div class="field"><label for="order_date">▦ Data do Pedido</label>
-      <input id="order_date" name="order_date" type="date" value="{{ today }}" required>
+
+    <div class="field">
+      <label for="order_date">Data do Pedido</label>
+      <input
+        id="order_date"
+        name="order_date"
+        type="date"
+        value="{{ today }}"
+        required
+      >
     </div>
-    <div class="info-banner">ⓘ &nbsp; Todos os campos são obrigatórios para o cadastro.</div>
-    <button class="primary save-button" type="submit">▣ &nbsp; Salvar Pedido</button>
+
+    <div class="info-banner">
+      Todos os campos são obrigatórios para o cadastro.
+    </div>
+
+    <button class="primary save-button" type="submit">
+      Salvar Pedido
+    </button>
+
   </form>
 </section>
 {% endblock %}
