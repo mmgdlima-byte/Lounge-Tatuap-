@@ -45,3 +45,7 @@ A integração automática com transportadoras reais não faz parte desta primei
 - Consulta e acompanhamento de pedidos.
 - Registro de ocorrências.
 - Atualização de status das entregas.
+## Segurança e armazenamento
+
+- Banco de dados SQLite para armazenamento local.
+- Arquivos temporários e banco de dados local ignorados pelo Git.
