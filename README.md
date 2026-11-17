@@ -39,3 +39,9 @@ O arquivo `database/schema.sql` contém o esquema SQL de referência.
 
 ## Escopo do MVP
 A integração automática com transportadoras reais não faz parte desta primeira versão. Os status e ocorrências são administrados manualmente para fins de prototipagem e validação.
+## Histórico de funcionalidades
+
+- Cadastro de pedidos com nome e volume.
+- Consulta e acompanhamento de pedidos.
+- Registro de ocorrências.
+- Atualização de status das entregas.
